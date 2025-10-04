@@ -1,0 +1,1 @@
+open the gray mingw32 from the mingw64 folder, type cd /c/DIRECTORYHERE,IUSUALLYPUTITINMYCDRIVE,NOSPACES make all

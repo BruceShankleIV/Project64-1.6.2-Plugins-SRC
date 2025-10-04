@@ -1,0 +1,10 @@
+N64Mouse=1
+BackgroundInput=0
+AxisSet=1
+MemPakFile=C2DefaultPak.mpk
+Button=1 6 01 0 6
+Button=1 7 00 0 6
+Button=1 18 00 0 7
+Button=1 19 00 1 7
+Button=1 20 01 0 7
+Button=1 21 01 1 7
