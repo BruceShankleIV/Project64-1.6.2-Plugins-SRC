@@ -55,34 +55,26 @@ static void concfg_set_defaults(ControllerConfig *cfg)
     cfg->range = 80;
     cfg->outer_edge = 0.72;
     cfg->is_clamped = 0;
-
     cfg->a2d_threshold = 0.25;
     cfg->a2d_trig = 0.25;
-
     // default controls
     cfg->a.primary        = CONTROLLER_A;
-    cfg->a.secondary      = CONTROLLER_B;
-
     cfg->b.primary        = CONTROLLER_X;
-    cfg->b.secondary      = CONTROLLER_Y;
-
     cfg->z.primary        = CONTROLLER_LTRIG;
     cfg->l.primary        = CONTROLLER_LSHOULDER;
     cfg->r.primary        = CONTROLLER_RTRIG;
     cfg->r.secondary      = CONTROLLER_RSHOULDER;
-
     cfg->start.primary    = CONTROLLER_START;
-
     cfg->dup.primary      = CONTROLLER_DUP;
     cfg->ddown.primary    = CONTROLLER_DDOWN;
     cfg->dleft.primary    = CONTROLLER_DLEFT;
     cfg->dright.primary   = CONTROLLER_DRIGHT;
-
     cfg->cup.primary      = CONTROLLER_RIGHTY_MIN;
     cfg->cdown.primary    = CONTROLLER_RIGHTY;
     cfg->cleft.primary    = CONTROLLER_RIGHTX_MIN;
+    cfg->cleft.secondary  = CONTROLLER_Y;
     cfg->cright.primary   = CONTROLLER_RIGHTX;
-
+    cfg->cright.secondary = CONTROLLER_B;
     cfg->up.primary       = CONTROLLER_LEFTY_MIN;
     cfg->down.primary     = CONTROLLER_LEFTY;
     cfg->left.primary     = CONTROLLER_LEFTX_MIN;
