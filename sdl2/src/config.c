@@ -7,25 +7,57 @@
 #include "config.h"
 #include <stdio.h>
 #include <errno.h>
+#include <windows.h>
 #include "sdl_input.h"
 
 ControllerConfig concfg;
-char configpath[PATH_MAX] = "Controller Profiles\\" PLUGIN_NAME ".ini";
+char configpath[PATH_MAX] = {0};
 
 static const char suffix_primary[] = "_primary";
 static const char suffix_secondary[] = "_secondary";
 
 ini_t *configini;
 
+static void config_build_path()
+{
+    char dllpath[MAX_PATH];
+    char *lastslash;
+
+    // Get full path to this DLL
+    HMODULE hm = NULL;
+    GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
+                       GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                       (LPCSTR)&config_build_path, &hm);
+
+    GetModuleFileNameA(hm, dllpath, MAX_PATH);
+
+    // Strip filename → directory
+    lastslash = strrchr(dllpath, '\\');
+    if (lastslash) *lastslash = '\0';
+
+    // Go one directory up (parent folder)
+    lastslash = strrchr(dllpath, '\\');
+    if (lastslash) *lastslash = '\0';
+
+    // Build final path:
+    // <parent>\Controller Profiles\PLUGIN_NAME.ini
+    snprintf(configpath, PATH_MAX,
+             "%s\\Controller Profiles\\%s.ini",
+             dllpath, PLUGIN_NAME);
+
+    // Ensure directory exists
+    char dirpath[PATH_MAX];
+    snprintf(dirpath, PATH_MAX, "%s\\Controller Profiles", dllpath);
+    CreateDirectoryA(dirpath, NULL);
+}
+
 static const ControllerConfigInfo concfg_field_info[] = {
     { CONFIG_FLOAT,   "deadzone",      offsetof(ControllerConfig, deadzone) },
     { CONFIG_FLOAT,   "outer_edge",    offsetof(ControllerConfig, outer_edge) },
     { CONFIG_INT,     "range",         offsetof(ControllerConfig, range) },
     { CONFIG_INT,     "is_clamped",    offsetof(ControllerConfig, is_clamped) },
-
     { CONFIG_FLOAT,   "a2d_threshold", offsetof(ControllerConfig, a2d_threshold) },
     { CONFIG_FLOAT,   "a2d_trig",      offsetof(ControllerConfig, a2d_trig) },
-
     { CONFIG_MAPPING, "a",             offsetof(ControllerConfig, a) },
     { CONFIG_MAPPING, "b",             offsetof(ControllerConfig, b) },
     { CONFIG_MAPPING, "z",             offsetof(ControllerConfig, z) },
@@ -274,6 +306,7 @@ static void config_save_con(ControllerConfig *cfg, ini_t *ini, char con_id)
 
 void config_load()
 {
+    config_build_path();
     FILE *configfile = fopen(configpath, "rb");
     if (configini != NULL) {
         ini_destroy(configini);
@@ -290,6 +323,7 @@ void config_load()
 
 void config_save()
 {
+    config_build_path();
     if (configini == NULL) {
         config_initialize();
     } else {

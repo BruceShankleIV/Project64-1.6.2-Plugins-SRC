@@ -1,7 +1,7 @@
 .POSIX:
 NAME     = Shankle's Octomino SDL2 Input 0.1.1
 COMMIT   = $(shell git describe --always --dirty --match 'NOT A TAG')
-VERSION  = 1.1
+VERSION  = 1.2
 REPO     = https://github.com/clickdevin/octomino-sdl-input
 
 BIN      = shankle-sdl2-input.dll
