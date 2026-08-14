@@ -63,7 +63,7 @@ number, ie. first XInput controller is first N64 player, etc.
 // Defines
 #define N64_ANALOG_MAX 128
 #define XC_ANALOG_MAX 32767
-#define BUTTON_ANALOG_VALUE 25
+#define BUTTON_ANALOG_VALUE 107
 
 // Enums
 namespace N64_BUTTONS

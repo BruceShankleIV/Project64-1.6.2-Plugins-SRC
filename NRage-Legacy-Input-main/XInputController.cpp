@@ -162,6 +162,7 @@ void AxisDeadzone( SHORT &AxisValue, long  lDeadZoneValue, float fDeadZoneRelati
 }
 
 void GetXInputControllerKeys( const int indexController, LPDWORD Keys )
+// Outer edge hack previously added here
 {
 	
 	if (fnXInputGetState == NULL)
@@ -177,7 +178,7 @@ void GetXInputControllerKeys( const int indexController, LPDWORD Keys )
     float d_ModifierX = (float)pcController->bStickRange / 100.0f;
     float d_ModifierY = (float)pcController->bStickRange / 100.0f;
 
-    float outer_edge = 1.6f;
+    //float outer_edge = 1.6f;
 
     *Keys = 0;
 
@@ -221,8 +222,7 @@ void GetXInputControllerKeys( const int indexController, LPDWORD Keys )
 
     short RY = state.Gamepad.sThumbRY * N64_ANALOG_MAX / XC_ANALOG_MAX;
     short RX = state.Gamepad.sThumbRX * N64_ANALOG_MAX / XC_ANALOG_MAX;
-
-    if (LX < LY)
+    /*if (LX < LY)
     {
         LY = (short)(LY * outer_edge);
         LY = LY > N64_ANALOG_MAX ? N64_ANALOG_MAX : (LY < -N64_ANALOG_MAX ? -N64_ANALOG_MAX : LY);
@@ -232,8 +232,7 @@ void GetXInputControllerKeys( const int indexController, LPDWORD Keys )
     {
         RY = (short)(RY * outer_edge);
         RY = RY > N64_ANALOG_MAX ? N64_ANALOG_MAX : (RY < -N64_ANALOG_MAX ? -N64_ANALOG_MAX : RY);
-    }
-
+    }*/
     short XAx = 0, XAxc = 0;
     short YAx = 0, YAxc = 0;
 
