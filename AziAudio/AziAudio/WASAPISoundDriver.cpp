@@ -261,7 +261,7 @@ DWORD WINAPI WASAPISoundDriver::AudioThreadProc(LPVOID lpParameter)
 	goto NiceExit;
 Exit:
 	DEBUG_OUTPUT("WASAPI: Error on thread\n");
-	MessageBox(NULL, "Was your sound device disconnected?)\n\nTo get audio restored, reset the emulator and make sure your sound device is connected/no loose or bad plug connection", PLUGIN_VERSION, MB_OK | MB_ICONSTOP);
+	MessageBox(NULL, "(Was your sound device disconnected?)\n\nTo get audio restored, reset the emulator and make sure your sound device is connected/no loose or bad plug connection", PLUGIN_VERSION, MB_OK | MB_ICONSTOP);
 NiceExit:
 	CoTaskMemFree(pwfx);
 	SAFE_RELEASE(pEnumerator);
