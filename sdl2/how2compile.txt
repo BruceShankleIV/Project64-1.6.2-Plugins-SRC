@@ -1,4 +1,4 @@
-open the gray mingw32 from the mingw64 folder, type cd /c/DIRECTORYHERE,IUSUALLYPUTITINMYCDRIVE,NOSPACES make all
+open the gray mingw32 from the msys64 folder, type cd /c/DIRECTORYHERE,IUSUALLYPUTITINMYCDRIVE,NOSPACES make all
 
 installing packages with msys2 using pacman command:
 pacman -S mingw-w64-i686-gcc

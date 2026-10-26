@@ -95,7 +95,6 @@ static void concfg_set_defaults(ControllerConfig *cfg)
     cfg->z.primary        = CONTROLLER_LTRIG;
     cfg->l.primary        = CONTROLLER_LSHOULDER;
     cfg->r.primary        = CONTROLLER_RTRIG;
-    cfg->r.secondary      = CONTROLLER_RSHOULDER;
     cfg->start.primary    = CONTROLLER_START;
     cfg->dup.primary      = CONTROLLER_DUP;
     cfg->ddown.primary    = CONTROLLER_DDOWN;
@@ -103,6 +102,7 @@ static void concfg_set_defaults(ControllerConfig *cfg)
     cfg->dright.primary   = CONTROLLER_DRIGHT;
     cfg->cup.primary      = CONTROLLER_RIGHTY_MIN;
     cfg->cdown.primary    = CONTROLLER_RIGHTY;
+    cfg->cdown.secondary  = CONTROLLER_RSHOULDER;
     cfg->cleft.primary    = CONTROLLER_RIGHTX_MIN;
     cfg->cleft.secondary  = CONTROLLER_Y;
     cfg->cright.primary   = CONTROLLER_RIGHTX;

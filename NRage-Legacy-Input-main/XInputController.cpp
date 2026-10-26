@@ -309,15 +309,17 @@ void DefaultXInputControllerKeys( LPXCONTROLLER gController)
 {
     using namespace N64_BUTTONS;
 
-    gController->stButtons.iA = XINPUT_GAMEPAD_A | XINPUT_GAMEPAD_Y;
-    gController->stButtons.iB = XINPUT_GAMEPAD_B | XINPUT_GAMEPAD_X;
+    gController->stButtons.iA = XINPUT_GAMEPAD_A;
+    gController->stButtons.iB = XINPUT_GAMEPAD_X;
     gController->stButtons.iStart = XINPUT_GAMEPAD_START | XINPUT_GAMEPAD_BACK;
     gController->stButtons.iDDown = XINPUT_GAMEPAD_DPAD_DOWN;
     gController->stButtons.iDLeft = XINPUT_GAMEPAD_DPAD_LEFT;
     gController->stButtons.iDRight = XINPUT_GAMEPAD_DPAD_RIGHT;
     gController->stButtons.iDUp = XINPUT_GAMEPAD_DPAD_UP;
+    gController->stButtons.iCDown = XINPUT_GAMEPAD_RIGHT_SHOULDER;
+    gController->stButtons.iCLeft = XINPUT_GAMEPAD_Y;
+    gController->stButtons.iCRight = XINPUT_GAMEPAD_B;
     gController->stButtons.iL = XINPUT_GAMEPAD_LEFT_SHOULDER;
-    gController->stButtons.iR = XINPUT_GAMEPAD_RIGHT_SHOULDER;
     gController->stAnalogs.iLeftTrigger = Z;
     gController->stAnalogs.iRightTrigger = R;
     gController->stAnalogs.iRXAxis = (CRight << 16) | CLeft;
